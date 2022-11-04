@@ -6,15 +6,17 @@ using System.Reflection;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.PostProcessing;
 using HarmonyLib;
+using DM;
 
 namespace Optimized_ {
 
     public class OPMain {
 
-        public OPMain() {
+        public OPMain()
+        {
 
-            db = LandfallUnitDatabase.GetDatabase();
-            foreach (var unit in db.UnitBaseList) {
+            var db = ContentDatabase.Instance().LandfallContentDatabase;
+            foreach (var unit in db.GetUnitBases().ToList()) {
                 if (!unit.GetComponent<SinkOnDeath>()) { unitsWithoutSink.Add(unit); }
             }
 
@@ -96,8 +98,6 @@ namespace Optimized_ {
 
             return setting;
         }
-
-        public LandfallUnitDatabase db;
 
         public List<GameObject> unitsWithoutSink = new List<GameObject>();
 
