@@ -66,8 +66,8 @@ namespace Optimized_ {
             }
         }
 
-        public SettingsInstance CreateSetting(SettingsInstance.SettingsType settingsType, string settingName, string toolTip, string settingListToAddTo, string[] options = null, float min = 0f, float max = 1f) {
-
+        public SettingsInstance CreateSetting(SettingsInstance.SettingsType settingsType, string settingName, string toolTip, string settingListToAddTo, string[] options = null, float min = 0f, float max = 1f) 
+        {
             var setting = new SettingsInstance();
 
             setting.settingName = settingName;
@@ -81,20 +81,20 @@ namespace Optimized_ {
 
             var global = ServiceLocator.GetService<GlobalSettingsHandler>();
             SettingsInstance[] listToAdd;
-            if (settingListToAddTo == "BUG") { listToAdd = global.BugsSettings; }
-            else if (settingListToAddTo == "VIDEO") { listToAdd = global.VideoSettings; }
-            else if (settingListToAddTo == "AUDIO") { listToAdd = global.AudioSettings; }
-            else if (settingListToAddTo == "CONTROLS") { listToAdd = global.ControlSettings; }
+            if (settingListToAddTo == "BUG") listToAdd = global.BugsSettings;
+            else if (settingListToAddTo == "VIDEO") listToAdd = global.VideoSettings;
+            else if (settingListToAddTo == "AUDIO") listToAdd = global.AudioSettings;
+            else if (settingListToAddTo == "CONTROLS") listToAdd = global.ControlSettings;
             else { listToAdd = global.GameplaySettings; }
 
             var list = listToAdd.ToList();
             list.Add(setting);
 
-            if (settingListToAddTo == "BUG") { typeof(GlobalSettingsHandler).GetField("m_bugsSettings", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(global, list.ToArray()); }
-            else if (settingListToAddTo == "VIDEO") { typeof(GlobalSettingsHandler).GetField("m_videoSettings", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(global, list.ToArray()); }
-            else if (settingListToAddTo == "AUDIO") { typeof(GlobalSettingsHandler).GetField("m_audioSettings", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(global, list.ToArray()); }
-            else if (settingListToAddTo == "CONTROLS") { typeof(GlobalSettingsHandler).GetField("m_controlSettings", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(global, list.ToArray()); }
-            else { typeof(GlobalSettingsHandler).GetField("m_gameplaySettings", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(global, list.ToArray()); }
+            if (settingListToAddTo == "BUG") typeof(GlobalSettingsHandler).GetField("m_bugsSettings", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(global, list.ToArray());
+            else if (settingListToAddTo == "VIDEO") typeof(GlobalSettingsHandler).GetField("m_videoSettings", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(global, list.ToArray());
+            else if (settingListToAddTo == "AUDIO") typeof(GlobalSettingsHandler).GetField("m_audioSettings", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(global, list.ToArray());
+            else if (settingListToAddTo == "CONTROLS") typeof(GlobalSettingsHandler).GetField("m_controlSettings", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(global, list.ToArray());
+            else typeof(GlobalSettingsHandler).GetField("m_gameplaySettings", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(global, list.ToArray());
 
             return setting;
         }
