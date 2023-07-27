@@ -12,7 +12,7 @@ Check the Video and Gameplay settings to see one new setting in each.
 
 ## Changelog
 
-The mod's [**Github**](https://github.com/donkeyrat/Optimized) is now the only place to view the full changelog.
+The mod's [**Github**](https://github.com/donkeyrat/Optimized) is the only place to view the full changelog.
 
 ## 1.0.0
 
@@ -22,6 +22,11 @@ The mod's [**Github**](https://github.com/donkeyrat/Optimized) is now the only p
 ### 1.0.1
 
  - Updated to the latest version of TABS.
+
+### 1.0.2
+
+ - Added TGCore as a dependency.
+ - Fixed a bug with siege weapons sinking.
 
 ## Credits
 
